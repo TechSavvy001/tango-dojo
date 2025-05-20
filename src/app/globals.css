@@ -1,26 +1,277 @@
 @import "tailwindcss";
+@import "tw-animate-css";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+@custom-variant dark (&:is(.dark *));
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+  --font-hachi-maru-pop: var(--font-hachi-maru-pop);
+
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --font-serif-jp: var(--font-noto-serif-jp);
+
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --radius: 0.625rem;
+
+  /* Hintergrund und Textfarben */
+  --background: oklch(0.98 0.01 270);; /* Helles Off-White */
+  --foreground: oklch(0.2 0.02 270); /* Dunkles Anthrazit */
+
+  /* Sidebar - Sanftes Grau-Beige */
+  --sidebar: oklch(0.95 0.015 270);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-border: oklch(0.85 0.015 270 / 30%);
+  --sidebar-hover: oklch(0.9 0.02 270);
+  --sidebar-active: oklch(0.87 0.02 270);
+
+  /* Primärfarben - Ruhiges Indigo-Blau */
+  --primary: oklch(0.65 0.17 30);
+  --primary-foreground: oklch(0.98 0.01 270);
+
+  /* Sekundärfarben - Sanftes Lavendel */
+  --secondary: oklch(0.85 0.1 80);
+  --secondary-foreground: oklch(0.2 0.02 270);
+
+
+  /* Akzentfarben - Sanftes Aprikosenorange */
+  --accent: oklch(0.88 0.2 45);
+  --accent-foreground: var(--foreground);
+
+  /* Kartenfarben - sanfte, pastellige Töne */
+  --card-1: oklch(0.9 0.15 30); /* Warmes Aprikosenorange */
+  --card-2: oklch(0.88 0.1 250); /* Sanftes Hellblau */
+  --card-3: oklch(0.86 0.1 280); /* Zartes Lavendel */
+  --card-4: oklch(0.87 0.1 320); /* Sanftes Rosa */
+  --card-5: oklch(0.88 0.1 100); /* Weiches Mintgrün */
+
+  /* Input und Border */
+  --border: oklch(0.87 0.02 270); /* Dezente Border */
+  --input: oklch(0.93 0.015 270);
+  --ring: oklch(0.7 0.08 70); /* Warmer Schatten */
+
+  /* Muted - Dezenter Grauton */
+  --muted: oklch(0.9 0.015 270);
+  --muted-foreground: oklch(0.45 0.015 270);
+  
+  /* Standardfarben für Light Mode */
+  --card: oklch(0.98 0.01 270);       /* Helles Off-White für Cards */
+  --card-content: oklch(0.95 0.015 270); /* Sanftes Grau für Card Content */
+  --card-foreground: oklch(0.2 0.02 270); /* Dunkles Anthrazit für Text */
+  
+  --card-hover: oklch(0.93 0.1 270); /* Helles Aprikosenorange für Hover */
+  --border-hover: oklch(0.88 0.2 45); /* Sanfter Akzent für Hover */
+  --link-hover: #d73c25;
+  --link-color: oklch(0.2 0.02 270); /* Standard: Schwarz */
+
+  
+
 }
 
-body {
-  background: var(--background);
+.dark {
+  --background: oklch(0.2 0.015 270); /* Dunkleres Grau-Blau */
+  --foreground: oklch(0.98 0.01 270); /* Heller Text */
+
+  /* Sidebar - Etwas dunkler für Kontrast */
+  --sidebar: oklch(0.2 0.015 270);
+  --sidebar-foreground: var(--foreground);
+  --sidebar-border: oklch(0.4 0.015 270 / 40%);
+  --sidebar-hover: oklch(0.25 0.03 270 / 60%);
+  --sidebar-active: oklch(0.3 0.03 270 / 70%);
+
+  /* Primärfarben - Intensiveres Indigo-Blau */
+  --primary: oklch(0.6 0.17 260);
+  --primary-foreground: oklch(0.98 0.01 270);
+
+  /* Sekundärfarben - Dunkleres Lavendel */
+  --secondary: oklch(0.45 0.1 280);
+  --secondary-foreground: var(--foreground);
+
+  /* Akzentfarben - Wärmeres Aprikosenorange */
+  --accent: oklch(0.78 0.2 45);
+  --accent-foreground: var(--foreground);
+
+  /* Kartenfarben - gedämpfte Pastelltöne */
+ /* Card Styles (Dark Mode) */
+  --card-1: oklch(0.2 0.05 270); /* Dunkles Grau-Blau */
+  --card-2: oklch(0.25 0.08 280); /* Dunkleres Hellblau */
+  --card-3: oklch(0.3 0.1 320); /* Dunkleres Lavendel */
+  --card-4: oklch(0.35 0.1 300); /* Dunkleres Rosa */
+  --card-5: oklch(0.4 0.1 100); /* Dunkles Mintgrün */
+  --card-foreground: var(--foreground);
+  --card: oklch(0.12 0.015 270);
+  --card-content: var(--card-4);
+
+  --card-hover-dark: oklch(0.25 0.08 280); /* Dunkleres Hellblau für Hover */
+  --border-hover-dark: oklch(0.78 0.2 45); /* Wärmeres Aprikosenorange für Hover */
+  --link-hover: #EF476F;
+  --link-color: oklch(0.98 0.01 270); /* Standard: Weiß (im Dark Mode) */
+
+}
+
+ruby {
+  ruby-position: over;
+}
+
+rt {
+  font-size: 0.75rem;
+  color: theme('colors.gray.500');
+}
+
+.perspective {
+  perspective: 1000px;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+/* Verwende die Schriftart mit der Klasse */
+.font-hachi {
+  font-family: var(--font-hachi-maru-pop);
+}
+.font-sans {
+  font-family: var(--font-sans), sans-serif;
+}
+.font-mono {
+  font-family: var(--font-mono), monospace;
+}
+.font-serif-jp {
+  font-family: var(--font-serif-jp), serif;
+}
+
+/* ShadCN Cards - Light Mode */
+.card {
+  background-color: var(--card-1);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  border: 1px solid var(--border);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.card-content {
+  background-color: var(--card-2);
+  color: var(--foreground);
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+}
+
+/* Light Mode - Default */
+.card {
+  background-color: var(--card-1);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+  transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+}
+
+.card:hover {
+  background-color: var(--card-hover, var(--card-2));
+  color: var(--foreground);
+  border-color: var(--border-hover, var(--accent));
+  box-shadow: 0 4px 12px var(--ring);
+}
+
+.card-content {
+  background-color: var(--card-2);
+  color: var(--foreground);
+  padding: 1rem;
+  border-radius: var(--radius-lg);
+}
+
+/* Dark Mode - Hover Styles */
+.dark .card {
+  background-color: var(--card);           /* entspricht var(--card-1) im Dark */
+  color: var(--card-foreground);
+  border: 1px solid var(--sidebar-border);
+}
+.dark .card-content {
+  background-color: var(--card-content);   /* entspricht var(--card-4) im Dark */
+  color: var(--card-foreground);
+}
+.dark .card:hover {
+  background-color: var(--card-hover-dark, var(--card-4));
+  color: var(--foreground);
+  border-color: var(--border-hover-dark, var(--accent));
+  box-shadow: 0 4px 12px var(--ring);
+}
+
+/* styles/globals.css */
+.text-primary-hover:hover {
+  color: var(--hover-color-light) !important;
+  text-decoration: none !important;
+}
+
+/* Dark Mode */
+.dark .text-primary-hover:hover {
+  color: var(--hover-color-dark) !important;
+  text-decoration: none !important;
+}
+
+/* Theme-Toggle—Light */
+.theme-toggle {
+  background-color: var(--muted);
+  color: var(--foreground);
+  transition: background-color 0.3s, color 0.3s, transform 0.2s;
+}
+
+/* Theme-Toggle—Dark */
+.dark .theme-toggle {
+  background-color: var(--card-4);      /* oder: var(--sidebar) */
+  color: var(--foreground);
+}
+
+/* Hover-Effekt */
+.theme-toggle:hover {
+  transform: scale(1.05);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
 }
