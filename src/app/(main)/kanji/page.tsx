@@ -9,7 +9,6 @@ import { useSearchParams } from 'next/navigation'
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { FavoritenKanjiGrid } from '@/components/kanji/FavoritenKanjiGrid'
 
-
 type KanjiEntry = {
   id: string
   kanji: string
@@ -91,22 +90,50 @@ export default function KanjiSearchPage() {
   return (
     <div className="max-w-4xl mx-auto p-6 space-y-6">
       <h1 className="text-2xl font-bold">🔍 Kanji durchsuchen</h1>
-      
-
         <Tabs defaultValue="alle" className="space-y-6">
-        <TabsList>
-            <TabsTrigger value="alle">Alle Kanji</TabsTrigger>
-            <TabsTrigger value="favoriten">Favoriten</TabsTrigger>
-        </TabsList>
+          <TabsList className="bg-card p-1 rounded-md flex gap-2 border border-border">
+            <TabsTrigger
+              value="alle"
+              className="
+                px-4 py-1 rounded-md border border-border
+                text-foreground bg-muted
+                data-[state=active]:bg-primary data-[state=active]:text-primary-foreground
+                transition-colors
+              "
+            >
+              Alle Kanji
+            </TabsTrigger>
 
-        {/* 🔎 Alle Kanji (Suche oder Volltext) */}
+            <TabsTrigger
+              value="favoriten"
+              className="
+                px-4 py-1 rounded-md border border-border
+                text-foreground bg-muted
+                data-[state=active]:bg-accent data-[state=active]:text-accent-foreground
+                transition-colors
+              "
+            >
+              Favoriten
+            </TabsTrigger>
+          </TabsList>
+
+        {/* Alle Kanji (Suche oder Volltext) */}
         <TabsContent value="alle">
-            <Input
+          <Input
             placeholder="Suche nach Kanji, Bedeutung oder Lesung"
             value={query}
             onChange={(e) => setQuery(e.target.value)}
-            className="mb-4"
-            />
+            className="
+              mb-4 
+              bg-input 
+              text-foreground 
+              placeholder-[color:var(--muted-foreground)] 
+              border 
+              border-border 
+              focus:ring-ring
+            "
+          />
+
 
             <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
             {results.map((kanji) => (

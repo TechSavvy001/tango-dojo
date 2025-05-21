@@ -63,20 +63,14 @@ export function NewDeckForm() {
           className={`
             w-full
             transition-colors
-    
-            /* Light-Mode */
-            bg-white
-            border border-gray-300
-            text-gray-900
-            placeholder-gray-400
-            focus:ring-2 focus:ring-indigo-500
-    
-            /* Dark-Mode */
-            dark:bg-gray-800
-            dark:border-gray-600
-            dark:text-gray-100
-            dark:placeholder-gray-500
-            dark:focus:ring-indigo-400
+            bg-input
+            text-foreground
+            placeholder-muted-foreground
+            border border-border
+            focus:ring-2 focus:ring-ring
+            focus:outline-none
+            rounded-md
+            px-3 py-2
           `}
         />
         <Button onClick={handleCreate} disabled={loading}>

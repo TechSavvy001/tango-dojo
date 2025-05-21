@@ -66,12 +66,16 @@ export default function Sidebar() {
     <>
       {/* Mobile Toggle */}
       <button
-        className="md:hidden fixed top-4 left-4 bg-gray-100 p-2 rounded shadow z-50"
+        className="md:hidden fixed top-4 left-4 z-50 p-2 rounded shadow
+                  bg-muted text-foreground 
+                  dark:bg-[var(--sidebar-hover)] dark:text-[var(--sidebar-foreground)]
+                  hover:bg-muted/80 dark:hover:bg-[var(--sidebar-active)] transition"
         onClick={() => setMobileOpen(!mobileOpen)}
         aria-label="Menü öffnen"
       >
         <Menu size={20} />
       </button>
+
 
       {/* Overlay */}
       {mobileOpen && (

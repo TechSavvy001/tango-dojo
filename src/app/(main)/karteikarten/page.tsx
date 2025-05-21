@@ -8,7 +8,7 @@ import { FilterBar } from '@/components/karteikarten/FilterBar'
 import { useCallback } from 'react'
 
 export default function KarteikartenPage() {
-    const supabase = createBrowserSupabaseClient()
+  const supabase = createBrowserSupabaseClient()
   
   const [vokabeln, setVokabeln] = useState<Vokabel[]>([])
   const [decks, setDecks] = useState<{ id: string; name: string }[]>([])
@@ -20,17 +20,17 @@ export default function KarteikartenPage() {
   const [loggedIn, setLoggedIn] = useState(false)
 
 
-const fetchData = useCallback(async () => {
-  setLoading(true)
-  const { data: auth } = await supabase.auth.getUser()
-  const userId = auth?.user?.id
-  if (!userId) {
-    setLoggedIn(false)
-    setLoading(false)
-    return
-  }
+  const fetchData = useCallback(async () => {
+    setLoading(true)
+    const { data: auth } = await supabase.auth.getUser()
+    const userId = auth?.user?.id
+    if (!userId) {
+      setLoggedIn(false)
+      setLoading(false)
+      return
+    }
 
-  setLoggedIn(true)
+    setLoggedIn(true)
 
   const { data: decksData } = await supabase
     .from('decks')

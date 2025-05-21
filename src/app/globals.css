@@ -83,7 +83,7 @@
 
   /* Input und Border */
   --border: oklch(0.87 0.02 270); /* Dezente Border */
-  --input: oklch(0.93 0.015 270);
+  --input: oklch(0.45 0.015 270);
   --ring: oklch(0.7 0.08 70); /* Warmer Schatten */
 
   /* Muted - Dezenter Grauton */
@@ -99,9 +99,10 @@
   --border-hover: oklch(0.88 0.2 45); /* Sanfter Akzent für Hover */
   --link-hover: #d73c25;
   --link-color: oklch(0.2 0.02 270); /* Standard: Schwarz */
-
-  
-
+  --destructive: oklch(0.8 0.2 30); /* warmes, helles Rot */
+  --destructive-foreground: oklch(0.98 0.01 270); /* sehr helles Off-White */
+  --popover: var(--card); /* oder z.B. oklch(0.98 0.01 270); */
+  --popover-foreground: var(--foreground);
 }
 
 .dark {
@@ -143,6 +144,14 @@
   --link-hover: #EF476F;
   --link-color: oklch(0.98 0.01 270); /* Standard: Weiß (im Dark Mode) */
 
+  --muted: oklch(0.2 0.015 270); /* z. B. dunkles Grau für Dark Mode */
+  --muted-foreground: oklch(0.7 0.02 270); /* heller Text darauf */
+
+  /* Destructive Button (Dark Mode) */
+  --destructive: oklch(0.4 0.2 30); /* dunkleres, gedecktes Rot */
+  --destructive-foreground: oklch(0.98 0.01 270); /* gleichbleibend hell für Text */
+  --popover: var(--card); /* oder z.B. oklch(0.12 0.015 270); */
+  --popover-foreground: var(--foreground);
 }
 
 ruby {

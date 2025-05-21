@@ -5,7 +5,9 @@ import { createBrowserSupabaseClient } from '@/lib/supabase-browser'
 import { shuffleArray } from '@/lib/shuffle' // kleine Shuffle-Helferfunktion
 import { Button } from '@/components/ui/button'
 import { useCallback } from 'react'
-
+import { Label } from "@/components/ui/label"
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select"
+import { Checkbox } from "@/components/ui/checkbox"
 
 type QuizQuestion = {
     question: string
@@ -139,31 +141,46 @@ export default function QuizPage() {
   if (questions.length === 0) return <p className="p-8">Lade Fragen...</p>
 
   return (
-    <div className="p-6 max-w-xl mx-auto space-y-4 bg-white rounded-xl shadow">
-        <div className="space-y-2">
-        <div>
-          <label className="text-sm">Fragenanzahl:</label>
-          <select value={numQuestions} onChange={(e) => setNumQuestions(Number(e.target.value))} className="ml-2 border rounded px-2 py-1">
-            {[5, 10, 15, 20].map((n) => <option key={n} value={n}>{n}</option>)}
-          </select>
+    <div className="p-6 max-w-xl mx-auto space-y-4 bg-card text-card-foreground rounded-xl shadow">
+        <div className="flex items-center gap-4">
+          <div className="flex flex-col gap-2">
+          <Label>Fragenanzahl</Label>
+          <Select value={numQuestions.toString()} onValueChange={(val) => setNumQuestions(Number(val))}>
+            <SelectTrigger className="w-28">
+              <SelectValue placeholder="Anzahl" />
+            </SelectTrigger>
+<SelectContent className="w-full bg-popover text-popover-foreground shadow-lg z-50" position="popper">
+              {[5, 10, 15, 20].map((n) => (
+                <SelectItem key={n} value={n.toString()}>{n} Fragen</SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
         </div>
 
-        <div>
-          <label className="text-sm">
-            <input type="checkbox" checked={shuffleEnabled} onChange={(e) => setShuffleEnabled(e.target.checked)} className="mr-2" />
-            Zufällige Reihenfolge
-          </label>
+        <div className="flex items-center gap-2">
+          <Checkbox
+            id="shuffle"
+            checked={shuffleEnabled}
+            onCheckedChange={(val) => setShuffleEnabled(Boolean(val))}
+          />
+          <Label htmlFor="shuffle">Antwortmöglichkeiten mischen</Label>
         </div>
 
-        <div>
-          <label className="text-sm">Frage anzeigen als:</label>
-          <select value={frontType} onChange={(e) => setFrontType(e.target.value as 'kanji' | 'kana' | 'de')} className="ml-2 border rounded px-2 py-1">
-            <option value="kanji">Kanji</option>
-            <option value="kana">Kana</option>
-            <option value="de">Deutsch</option>
-          </select>
+        <div className="flex flex-col gap-2">
+          <Label>Frage anzeigen als</Label>
+          <Select value={frontType} onValueChange={(val) => setFrontType(val as 'kanji' | 'kana' | 'de')}>
+            <SelectTrigger className="w-36">
+              <SelectValue />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="kanji">Kanji</SelectItem>
+              <SelectItem value="kana">Kana</SelectItem>
+              <SelectItem value="de">Deutsch</SelectItem>
+            </SelectContent>
+          </Select>
         </div>
       </div>
+
 
       <p className="text-sm text-gray-500">
         Frage {currentIndex + 1} von {questions.length}
@@ -178,15 +195,17 @@ export default function QuizPage() {
             <button
               key={idx}
               onClick={() => handleAnswer(option)}
-              className={`w-full text-left p-2 border rounded-md transition ${
+              className={`w-full text-left p-2 border rounded-md transition
+              ${
                 selectedAnswer
                   ? isCorrect
-                    ? 'bg-green-200 border-green-400'
+                    ? 'bg-green-200 dark:bg-green-700 border-green-400 dark:border-green-500'
                     : isSelected
-                    ? 'bg-red-200 border-red-400'
+                    ? 'bg-red-200 dark:bg-red-700 border-red-400 dark:border-red-500'
                     : 'opacity-50'
-                  : 'hover:bg-gray-100'
+                  : 'hover:bg-muted hover:border-muted-foreground dark:hover:bg-muted dark:hover:border-muted-foreground'
               }`}
+
               disabled={!!selectedAnswer}
             >
               {option}
@@ -221,8 +240,11 @@ export default function QuizPage() {
         <div
           key={i}
           className={`p-2 border rounded-md ${
-            a.isCorrect ? 'border-green-300 bg-green-50' : 'border-red-300 bg-red-50'
+            a.isCorrect
+              ? 'border-green-300 bg-green-50 dark:bg-green-800 dark:border-green-500'
+              : 'border-red-300 bg-red-50 dark:bg-red-800 dark:border-red-500'
           }`}
+
         >
           <p className="text-sm font-medium">Frage: {a.question}</p>
           <p className="text-sm">
