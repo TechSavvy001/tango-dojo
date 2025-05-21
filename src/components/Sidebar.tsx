@@ -129,6 +129,7 @@ export default function Sidebar() {
               <Link
                 key={href}
                 href={href}
+                onClick={() => setMobileOpen(false)}
                 className={`
                   group flex items-center px-4 py-2 rounded-md
                   transition-colors
@@ -148,6 +149,7 @@ export default function Sidebar() {
           {user?.role === 'admin' && (
             <Link
               href="/admin/kanji"
+              onClick={() => setMobileOpen(false)}
               className="group flex items-center px-4 py-2 rounded-md
                   transition-colors
                   hover:bg-gray-100
@@ -164,6 +166,7 @@ export default function Sidebar() {
           {accountNav.map(({ label, icon: Icon, href }) => (
               <Link
                 key={label}
+                onClick={() => setMobileOpen(false)}
                 href={href || '#'}
                 className="group flex items-center px-4 py-2 rounded-md
                   transition-colors

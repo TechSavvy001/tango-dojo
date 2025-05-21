@@ -61,7 +61,7 @@ useEffect(() => {
   if (!loggedIn) return <p className="p-8">Bitte einloggen</p>
 
   return (
-    <div className="p-6 space-y-4">
+    <div className="p-6 space-y-4 max-w-4xl mx-auto">
       <FilterBar
         decks={decks}
         selectedDeckId={selectedDeckId}

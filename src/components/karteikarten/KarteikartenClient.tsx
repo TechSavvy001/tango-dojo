@@ -75,12 +75,12 @@ export function KarteikartenClient({ vokabeln, frontType, filterLevel }: Props) 
   }
 
   return (
-    <div className="p-8 space-y-4">
+    <div className="p-4 sm:p-6 md:p-8 space-y-4">
       {filteredVokabeln.length === 0 ? (
         <p className="text-center text-gray-500">Keine Vokabeln für diesen Filter gefunden.</p>
       ) : (
         <>
-          <p className="text-sm text-center text-gray-600">
+          <p className="text-sm sm:text-base lg:text-lg text-center text-gray-600">
             Karte {index + 1} von {filteredVokabeln.length}
           </p>
 
@@ -92,7 +92,7 @@ export function KarteikartenClient({ vokabeln, frontType, filterLevel }: Props) 
 
           {/* Feedback-Anzeige */}
           {feedback && (
-            <p className={`text-center text-lg font-semibold transition-opacity duration-300 ${
+            <p className={`text-center text-sm sm:text-base lg:text-lg font-semibold ${
               feedback === 'correct' ? 'text-green-600' : 'text-red-600'
             }`}>
               {feedback === 'correct' ? '✅ Richtig!' : '❌ Falsch!'}

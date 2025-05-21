@@ -25,9 +25,9 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
   <html lang="de" className={`${hachiMaruPop.variable} ${geistSans.variable} ${geistMono.variable} ${notoSerifJP.variable} antialiased`}>
     <body>
-    <div className="fixed top-4 right-4 z-50">
+      <div className="fixed top-4 right-4 z-50 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md shadow-md rounded-full p-2 border border-gray-200 dark:border-gray-700">
         <ThemeToggle />
-        </div>
+      </div>
         <Providers>{children}</Providers>
       </body>
     </html>

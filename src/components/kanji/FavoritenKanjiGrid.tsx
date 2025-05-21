@@ -38,20 +38,22 @@ export function FavoritenKanjiGrid() {
   if (favoriten.length === 0) return <p className="text-muted-foreground">Keine Favoriten gefunden.</p>
 
   return (
-    <div className="grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3">
-      {favoriten.map((kanji) => (
-        <Link key={kanji.id} href={`/kanji/${kanji.id}`}>
-          <Card className="cursor-pointer hover:shadow-md transition">
-            <CardHeader>
-              <CardTitle className="text-3xl">{kanji.kanji}</CardTitle>
-            </CardHeader>
-            <CardContent className="text-sm text-muted-foreground">
-              {kanji.bedeutung}<br />
-              {kanji.aussprache_on} / {kanji.aussprache_kun}
-            </CardContent>
-          </Card>
-        </Link>
-      ))}
+    <div className="px-4 sm:px-6 md:px-8 lg:px-12">
+      <div className="grid gap-4 sm:gap-6 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4">
+        {favoriten.map((kanji) => (
+          <Link key={kanji.id} href={`/kanji/${kanji.id}`}>
+            <Card className="cursor-pointer hover:shadow-md transition h-full">
+              <CardHeader>
+                <CardTitle className="text-3xl text-center">{kanji.kanji}</CardTitle>
+              </CardHeader>
+              <CardContent className="text-sm text-muted-foreground text-center">
+                {kanji.bedeutung}<br />
+                {kanji.aussprache_on} / {kanji.aussprache_kun}
+              </CardContent>
+            </Card>
+          </Link>
+        ))}
+      </div>
     </div>
   )
 }

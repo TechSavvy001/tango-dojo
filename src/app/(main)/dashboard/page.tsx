@@ -245,7 +245,7 @@ export default function Dashboard() {
   
   
   return (
-    <div className="p-6 max-w-6xl mx-auto space-y-8">
+    <div className="p-4 sm:p-6 max-w-6xl mx-auto space-y-8">
       <h1 className="text-2xl font-semibold">🎯 Dein Dashboard</h1>
 
       {/* Einstellungen */}
@@ -254,7 +254,7 @@ export default function Dashboard() {
       </section>
 
       {/* 1. Zeile: QuizWeekChart + TageszielCard + ReviewSummaryCard */}
-      <section className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3">
         <QuizWeekChart data={grouped} />
         <TageszielCard todaysCount={todaysCount} goal={goal} />
         <ReviewSummaryCard stats={reviewStats} />

@@ -29,10 +29,10 @@ export function FilterBar({
   setFilterLevel,
 }: Props) {
   return (
-    <div className="flex flex-wrap gap-6 items-end">
+    <div className="flex flex-col sm:flex-row sm:flex-wrap gap-4 sm:gap-6 items-start sm:items-end">
       {/* Deck-Auswahl */}
-      <div>
-        <Label>Deck</Label>
+      <div className="w-full sm:w-auto">
+        <Label className="text-sm sm:text-base">Deck</Label>
         <Select
           value={selectedDeckId}
           onValueChange={setSelectedDeckId}
